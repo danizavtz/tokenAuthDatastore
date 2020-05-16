@@ -11,4 +11,8 @@ After that you should init your google account in your instance `gcloud init`
 
 ## Project architecture
 
-This project architecture is based in current [express-generator](https://expressjs.com/pt-br/starter/generator.html) --no-view
+This project architecture is based in current [express-generator](https://expressjs.com/pt-br/starter/generator.html)
+
+and can be achieved with following command:
+
+`$ express --no-view`

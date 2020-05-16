@@ -9,3 +9,6 @@ For this follow the [google documentation](https://cloud.google.com/sdk/docs/qui
 
 After that you should init your google account in your instance `gcloud init`
 
+## Project architecture
+
+This project architecture is based in current [express-generator](https://expressjs.com/pt-br/starter/generator.html) --no-view

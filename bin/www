@@ -4,4 +4,4 @@ const {Datastore} = require('@google-cloud/datastore');
 const dbinstance = new Datastore({ projectId: process.env.DATASTOREPROJECTID});
 app.set('datastore', dbinstance);
 app.listen(process.env.PORT);
-console.log('Microsservice login listening at http://localhost:%s', process.env.PORT);
+console.log(`Microsservice login listening at http://localhost:${process.env.PORT}`);

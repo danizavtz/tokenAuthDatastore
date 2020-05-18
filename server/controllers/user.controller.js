@@ -13,7 +13,6 @@ exports.listUsers = async (req, res) => {
 exports.findUserById = async (req, res, next) => {
     try {
         const dbi = req.app.get('datastore')
-        console.log(req.params)
         const chave = dbi.key([tipo, Number(req.params.id)]);
         const usuario = await dbi.get(chave)
         if (usuario[0] === undefined) {
@@ -22,7 +21,6 @@ exports.findUserById = async (req, res, next) => {
         req.usuario = usuario
         res.status(200).json(req.usuario);
     } catch (e) {
-        console.log('pff')
         res.status(500).json({ errors: [{ location: req.path, msg: e.message, param: null }] })
     }
 }

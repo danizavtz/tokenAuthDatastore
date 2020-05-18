@@ -1,5 +1,8 @@
 const router = require('express').Router();
+const userRoute = require('./routes/user.route');
 
+
+router.use(userRoute)
 router.use((err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
       res.status(401).json({ errors: [{location: "server", msg: "Unauthorized", param: req.path}]});

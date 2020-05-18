@@ -1,3 +1,4 @@
+![datastore](https://upload.wikimedia.org/wikipedia/commons/0/05/Google-Cloud-Datastore-Logo.svg)
 # tokenAuthDatastore
 nodejs datastore example integration
 
@@ -11,6 +12,8 @@ After that you should init your google account in your instance
 
 `$ gcloud init`
 
+Acessar a página de [credenciais do google](https://console.cloud.google.com/apis/credentials/serviceaccountkey?project=healthy-pager-276023&folder&organizationId):
+
 ## Project architecture
 
 This project architecture is based in current [express-generator](https://expressjs.com/pt-br/starter/generator.html)
@@ -18,3 +21,4 @@ This project architecture is based in current [express-generator](https://expres
 and can be achieved with following command:
 
 `$ express --no-view`
+

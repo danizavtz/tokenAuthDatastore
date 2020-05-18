@@ -20,15 +20,11 @@ exports.findUserById = async (req, res, next) => {
             return res.status(404).json({ errors: [{ location: req.path, msg: "Not found", param: req.params.id }] })
         }
         req.usuario = usuario
-        next()
+        res.status(200).json(req.usuario);
     } catch (e) {
         console.log('pff')
         res.status(500).json({ errors: [{ location: req.path, msg: e.message, param: null }] })
     }
-}
-
-exports.resultado = (req, res) => {
-    res.status(200).json(req.usuario);
 }
 
 exports.criarUsuario = async (req, res) => {

@@ -31,9 +31,7 @@ exports.criarUsuario = async (req, res) => {
         const chaveusuario = dbi.key(tipo)
         const entidadeUsuario = {
             key: chaveusuario,
-            data: [
-                req.body
-            ]
+            data: [req.body]
         }
         await dbi.save(entidadeUsuario)
         res.set('location', `/users/${chaveusuario.id}`)

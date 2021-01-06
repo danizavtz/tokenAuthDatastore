@@ -34,7 +34,7 @@
     "supertest": "^6.0.1"
   },
   "devDependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "chai": "^4.2.0",
     "eslint": "^7.16.0",
     "mocha": "^8.2.1",

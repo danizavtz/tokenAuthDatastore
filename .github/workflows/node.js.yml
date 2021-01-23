@@ -30,3 +30,4 @@ jobs:
       env:
         SECRET: githubactions
         PORT: 3000
+        SCRYPTPARAM: 10

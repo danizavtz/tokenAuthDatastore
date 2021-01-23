@@ -31,3 +31,14 @@ jobs:
         SECRET: githubactions
         PORT: 3000
         SCRYPTPARAM: 10
+    - run: npm run coverage
+      env:
+        SECRET: githubactions
+        PORT: 3000
+        SCRYPTPARAM: 10
+    - run: npm i -g codecov && npm run coverage:report && codecov -t ${{ secrets.CODECOV_TOKEN }}
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        SECRET: githubactions
+        PORT: 3000
+        SCRYPTPARAM: 10

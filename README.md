@@ -1,4 +1,5 @@
 ![datastore](https://upload.wikimedia.org/wikipedia/commons/0/05/Google-Cloud-Datastore-Logo.svg)
+[![codecov](https://codecov.io/gh/danizavtz/tokenAuthDatastore/branch/master/graph/badge.svg?token=NCX83VH91Z)](https://codecov.io/gh/danizavtz/tokenAuthDatastore)
 # tokenAuthDatastore
 nodejs datastore example integration
 

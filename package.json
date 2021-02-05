@@ -35,12 +35,12 @@
   },
   "devDependencies": {
     "axios": "^0.21.1",
-    "chai": "^4.2.0",
-    "eslint": "^7.18.0",
+    "chai": "^4.3.0",
+    "eslint": "^7.19.0",
     "mocha": "^8.2.1",
-    "nock": "^13.0.6",
+    "nock": "^13.0.7",
     "nodemon": "^2.0.7",
     "nyc": "^15.1.0",
-    "supertest": "^6.1.1"
+    "supertest": "^6.1.3"
   }
 }

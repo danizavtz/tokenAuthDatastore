@@ -42,18 +42,14 @@ exports.criarUsuario = async (req, res) => {
 }
 
 exports.atualizar = async (req, res) => {
-    const dbi = req.app.get('datastore')
-    const transaction = dbi.transaction();
     try {
         const dbi = req.app.get('datastore')
         const chave = dbi.key([tipo, Number(req.params.id)])
-        const transaction = dbi.transaction();
-        const [usuario] = await transaction.get(chave);
-        transaction.save({ key: chave, data: req.body });
-        await transaction.commit();
+        const usuario = await dbi.get(chave);
+        const mergedObj = { ...usuario, ...req.body }; //aqui a ordem é importante, estou priorizando as changes do body sobreescrevendo dados em comum que estão no datastore
+        dbi.save({ key: chave, data: [mergedObj] });
         res.status(204).end()
     } catch (e) {
-        transaction.rollback();
         res.status(500).json({ errors: [{ location: req.path, msg: e.message, param: null }] })
     }
 }

@@ -172,6 +172,69 @@ describe('#User', () => {
                 });
         });
     });
+    describe('PUT', () => {
+        it('Check update user with success', (done) => {
+            const chave = {
+                namespace: undefined,
+                id: 1,
+                kind: "Pessoa",
+                path: [
+                    "Pessoa",
+                    1,
+                ],
+            };
+            const content = fs.readFileSync('./test/mockedresponses/user-post.json')
+            const parsedContent = JSON.parse(content)
+            const stub1 = sinon.stub(dbinstance, 'key').returns(chave);
+            const stub2 = sinon.stub(dbinstance, 'get').returns(parsedContent);
+            const stub3 = sinon.stub(dbinstance, 'save').returns([])
+            api.put('/users/0000000000000001')
+                .set('Accept', 'application/json; charset=utf-8')
+                .send(parsedContent)
+                .expect(204)
+                .end((err, res) => {
+                    if (err) throw err;
+                    stub1.restore();
+                    stub2.restore();
+                    stub3.restore();
+                    expect(res.status).equal(204);
+                    done();
+                })
+        });
+        it('Check delete user with error 500', (done) => {
+            const chave = {
+                namespace: undefined,
+                id: 1,
+                kind: "Pessoa",
+                path: [
+                    "Pessoa",
+                    1,
+                ],
+            };
+            const content = fs.readFileSync('./test/mockedresponses/user-post.json');
+            const parsedContent = JSON.parse(content);
+            const errorContent = fs.readFileSync('./test/mockedresponses/users-500.json')
+            const parsedErrorContent = JSON.parse(errorContent)
+            const stub1 = sinon.stub(dbinstance, 'key').returns(chave);
+            const stub2 = sinon.stub(dbinstance, 'get').returns(parsedContent)
+            const stub3 = sinon.stub(dbinstance, 'save').throws(parsedErrorContent)
+            api.put('/users/0000000000000001')
+                .set('Accept', 'application/json; charset=utf-8')
+                .send(parsedContent)
+                .expect(500)
+                .end((err, res) => {
+                    if (err) throw err;
+                    stub1.restore();
+                    stub2.restore();
+                    stub3.restore();
+                    expect(res.body).to.have.property("errors");
+                    expect(res.body.errors).to.be.an("array");
+                    expect(res.body.errors[0]).to.have.property('msg');
+                    expect(res.body.errors[0].msg).equal('mocked error');
+                    done();
+                });
+        });
+    });
     describe('DELETE', () => {
         it('Check delete user with success', (done) => {
             const chave = {
@@ -209,7 +272,7 @@ describe('#User', () => {
             const content = fs.readFileSync('./test/mockedresponses/users-500.json')
             const parsedContent = JSON.parse(content)
             const stub1 = sinon.stub(dbinstance, 'key').returns(chave);
-            const stub2 = sinon.stub(dbinstance, 'delete').throws(parsedContent)
+            const stub2 = sinon.stub(dbinstance, 'delete').throws(parsedContent);
             api.delete('/users/0000000000000001')
                 .set('Accept', 'application/json; charset=utf-8')
                 .expect(500)

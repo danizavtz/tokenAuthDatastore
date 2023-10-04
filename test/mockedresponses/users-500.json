@@ -1,9 +1,5 @@
 {
-  "errors": [
-    {
-      "location": "/users",
-      "msg": "Could not load the default credentials. Browse to https://cloud.google.com/docs/authentication/getting-started for more information.",
-      "param": null
-    }
-  ]
+  "location": "/users",
+  "message": "mocked error",
+  "param": null
 }

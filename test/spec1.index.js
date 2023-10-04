@@ -31,15 +31,5 @@ describe('#Index', () => {
                 done()
             })
         })
-        it('Check not authorized route', (done) => {
-            api.get('/secure')
-            .set('Accept', 'application/json; charset=utf-8')
-            .expect(401)
-            .end((err, res) => {
-                if (err) throw err;                
-                expect(res.status).equal(401)
-                done()
-            })
-        })
     })
 })

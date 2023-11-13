@@ -4,7 +4,7 @@
   "description": "nodejs datastore example",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon ./bin/www",
+    "dev": "node --watch ./bin/www",
     "start": "node ./bin/www",
     "test": "mocha --reporter spec test/ --exit",
     "coverage": "nyc mocha --exit --reporter progress ./test/",
@@ -33,9 +33,8 @@
   "devDependencies": {
     "chai": "^4.3.10",
     "mocha": "^10.2.0",
-    "nodemon": "^3.0.1",
     "nyc": "^15.1.0",
-    "sinon": "^16.0.0",
+    "sinon": "^17.0.1",
     "supertest": "^6.3.3"
   }
 }
